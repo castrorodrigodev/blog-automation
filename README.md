@@ -18,3 +18,9 @@
 ### ---------------------
 ### 1. make migrate-down
 ###### ###### ###### ###### ###### ######
+### Another approach (Similar to Big Data)
+### 1. make reset
+### 2. make migrate-up
+### 3. make run FILE=sql/generate-big-data.sql
+### 3. make run FILE=sql/recalculate-likes.sql
+###### ###### ###### ###### ###### ######
