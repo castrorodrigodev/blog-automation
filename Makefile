@@ -1,3 +1,6 @@
+SCRIPTS_DIR=scripts
+SQL_DIR=sql
+
 .PHONY: up down reset create seed run migrate-up migrate-down
 
 up:
@@ -7,28 +10,28 @@ down:
 	docker-compose down -v
 
 reset:
-	./src/scripts/run-sql.sh src/sql/reset.sql
+	${SCRIPTS_DIR}/run-sql.sh ${SQL_DIR}/reset.sql
 
 # create:
-# 	./src/scripts/run-sql.sh src/sql/base/create.sql
+# 	${SCRIPTS_DIR}/run-sql.sh ${SQL_DIR}/base/create.sql
 
 create-migration:
-	./src/scripts/create-migration.sh $(NAME)
+	${SCRIPTS_DIR}/create-migration.sh $(NAME)
 
 migrate-up:
-	./src/scripts/migrate-up.sh
+	${SCRIPTS_DIR}/migrate-up.sh
 
 migrate-down:
-	./src/scripts/migrate-down.sh
+	${SCRIPTS_DIR}/migrate-down.sh
 
 seed:
-	./src/scripts/run-sql.sh src/sql/seeds/seed.sql
+	${SCRIPTS_DIR}/run-sql.sh ${SQL_DIR}/seeds/seed.sql
 
 run:
-	@echo "Uso: make run FILE=src/sql/archivo.sql"
+	@echo "Uso: make run FILE=${SQL_DIR}/archivo.sql"
 	@if [ -z "$(FILE)" ]; then \
 		echo "ERROR: Debes pasar FILE=archivo.sql"; \
 		exit 1; \
 	fi
-	./src/scripts/run-sql.sh $(FILE)
-# make run FILE=src/sql/mi_archivo.sql
+	${SCRIPTS_DIR}/run-sql.sh $(FILE)
+# make run FILE=${SQL_DIR}/mi_archivo.sql

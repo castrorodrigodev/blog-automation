@@ -4,7 +4,7 @@ set -a
 source .env
 set +a
 
-MIGRATIONS_DIR="src/sql/migrations"
+MIGRATIONS_DIR="sql/migrations"
 
 # Crear tabla migrations si no existe
 docker exec -i "$DB_CONTAINER" psql -U "$DB_USER" -d "$DB_NAME" <<'EOF'

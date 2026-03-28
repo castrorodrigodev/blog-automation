@@ -9,4 +9,4 @@ if [ -z "$DB_CONTAINER" ] || [ -z "$DB_USER" ] || [ -z "$DB_NAME" ]; then
   exit 1
 fi
 
-cat src/sql/reset.sql | docker exec -i "$DB_CONTAINER" psql -U "$DB_USER" -d "$DB_NAME"
+cat sql/reset.sql | docker exec -i "$DB_CONTAINER" psql -U "$DB_USER" -d "$DB_NAME"
