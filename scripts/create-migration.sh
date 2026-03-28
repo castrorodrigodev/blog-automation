@@ -8,7 +8,7 @@ fi
 
 # Normalize name: lowercase and underscores
 NAME=$(echo "$1" | tr ' ' '_' | tr '[:upper:]' '[:lower:]')
-DIR="src/sql/migrations"
+DIR="sql/migrations"
 
 # Check if a migration with this descriptive name already exists (ignoring timestamp)
 if ls "$DIR"/*_"$NAME".sql 1> /dev/null 2>&1; then
